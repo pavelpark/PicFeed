@@ -26,12 +26,16 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.present(self.imagePicker, animated: true, completion: nil)
     }
     
+    
     // if the user presses cancel button this comes in play
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+       if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+        imageView.image = image
+        self.dismiss(animated: true, completion: nil)
+        }
         print("info: \(info)")
     }
     

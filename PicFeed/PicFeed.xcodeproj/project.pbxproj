@@ -11,9 +11,9 @@
 		DB7258131E897F0C006884E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB7258111E897F0C006884E5 /* Main.storyboard */; };
 		DB7258151E897F0C006884E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7258141E897F0C006884E5 /* Assets.xcassets */; };
 		DB7258181E897F0C006884E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB7258161E897F0C006884E5 /* LaunchScreen.storyboard */; };
-		DB72582E1E89816B006884E5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB72582D1E89816B006884E5 /* CloudKit.framework */; };
 		DB7258341E8984E3006884E5 /* CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7258331E8984E3006884E5 /* CloudKit.swift */; };
 		DB7258361E898D4E006884E5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7258351E898D4E006884E5 /* HomeViewController.swift */; };
+		DBEDC09C1E89AFDD00A30BBF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEDC09B1E89AFDD00A30BBF /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,9 +24,9 @@
 		DB7258171E897F0C006884E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB7258191E897F0C006884E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB72581F1E898039006884E5 /* PicFeed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicFeed.entitlements; sourceTree = "<group>"; };
-		DB72582D1E89816B006884E5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DB7258331E8984E3006884E5 /* CloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKit.swift; sourceTree = "<group>"; };
 		DB7258351E898D4E006884E5 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DBEDC09B1E89AFDD00A30BBF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,7 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB72582E1E89816B006884E5 /* CloudKit.framework in Frameworks */,
+				DBEDC09C1E89AFDD00A30BBF /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +72,7 @@
 		DB7258201E89803E006884E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DB72582D1E89816B006884E5 /* CloudKit.framework */,
+				DBEDC09B1E89AFDD00A30BBF /* CloudKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -145,7 +145,7 @@
 				TargetAttributes = {
 					DB7258091E897F0C006884E5 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = FQ3G8657EV;
+						DevelopmentTeam = 6X88V8MC7R;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -320,10 +320,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PicFeed/PicFeed.entitlements;
-				DEVELOPMENT_TEAM = FQ3G8657EV;
+				DEVELOPMENT_TEAM = 6X88V8MC7R;
 				INFOPLIST_FILE = PicFeed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.PavelParkhomey.PicFeed;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pavelpark.PicFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -334,10 +334,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PicFeed/PicFeed.entitlements;
-				DEVELOPMENT_TEAM = FQ3G8657EV;
+				DEVELOPMENT_TEAM = 6X88V8MC7R;
 				INFOPLIST_FILE = PicFeed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.PavelParkhomey.PicFeed;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pavelpark.PicFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
