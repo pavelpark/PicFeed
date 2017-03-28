@@ -14,10 +14,20 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var filterButtonTopConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         //This is Override beacuse we are overriding the superclass
         super.viewDidLoad()
 
+        filterButtonTopConstraint.constant = 8
+        
+        UIView.animate(withDuration: 0.6) {
+            self.view.layoutIfNeeded()
+        }
+        
+        //This is how you do ANIMATIONS^
+        
         // Do any additional setup after loading the view.
     }
     //handles each source type
