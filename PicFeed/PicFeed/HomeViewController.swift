@@ -55,6 +55,18 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBAction func postButtonPressed(_ sender: Any) {
         
+        if let image = self.imageView.image{
+            
+            let newPost = Post(image: image)
+            CloudKit.shared.save(post: newPost, completion: { (success) in
+                
+                if success {
+                    print("Saved post successfully to CloudKit!")
+                } else {
+                    print("We did not successfully post to CloudKit...")
+                }
+            })
+        }
     }
     
     //actions when the user clicks on it
