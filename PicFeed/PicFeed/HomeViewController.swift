@@ -16,15 +16,18 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var filterButtonTopConstraint: NSLayoutConstraint!
     
+    override func viewDidAppear(_ animated:Bool) {
+    
+    filterButtonTopConstraint.constant = 8
+    
+    UIView.animate(withDuration: 0.6) {
+    self.view.layoutIfNeeded()
+    }
+
+    }
     override func viewDidLoad() {
         //This is Override beacuse we are overriding the superclass
         super.viewDidLoad()
-
-        filterButtonTopConstraint.constant = 8
-        
-        UIView.animate(withDuration: 0.6) {
-            self.view.layoutIfNeeded()
-        }
         
         //This is how you do ANIMATIONS^
         
@@ -99,6 +102,21 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 self.imageView.image = filteredImage
             })
         }
+        let coldAction = UIAlertAction(title: "Cold", style: .default) { (action) in
+            Filters.filter(name: .coldEffect, image: image, completion: { (filteredImage) in
+                self.imageView.image = filteredImage
+            })
+        }
+        let devilAction = UIAlertAction(title: "Devil", style: .default) { (action) in
+            Filters.filter(name: .devilEffect, image: image, completion: { (filteredImage) in
+                self.imageView.image = filteredImage
+            })
+        }
+        let posterizeAction = UIAlertAction(title: "Posterize", style: .default) { (action) in
+            Filters.filter(name: .posterizeEffect, image: image, completion: { (filteredImage) in
+                self.imageView.image = filteredImage
+            })
+        }
         let resetAction = UIAlertAction(title: "Reset Image", style: .destructive) { (action) in
             self.imageView.image = Filters.originalImage
         }
@@ -106,6 +124,9 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         alertController.addAction(blackAndWhiteAction)
         alertController.addAction(vintageAction)
+        alertController.addAction(coldAction)
+        alertController.addAction(devilAction)
+        alertController.addAction(posterizeAction)
         alertController.addAction(resetAction)
         alertController.addAction(cancelAction)
         
