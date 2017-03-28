@@ -15,6 +15,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
+        //This is Override beacuse we are overriding the superclass
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -24,6 +25,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.imagePicker.delegate = self
         self.imagePicker.sourceType = sourceType
         self.present(self.imagePicker, animated: true, completion: nil)
+        // This is for the imagePickerController, see docs for options
     }
     
     
@@ -31,10 +33,14 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
         imageView.image = image
         self.dismiss(animated: true, completion: nil)
+        //this allows funcionality to dismiss the imageview
+
         }
         print("info: \(info)")
     }
@@ -42,6 +48,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBAction func imageTapped(_ sender: Any) {
         print("User tapped Image")
         self.presentActionSheet()
+        //This is basically an event listener
+        //It calls all the actions that are located in the function underneath, that fires off the camera and photo library and cancel button.
     }
     
     //actions when the user clicks on it
