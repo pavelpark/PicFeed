@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y1z-3k-Dq1">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markus_spiske_226898" translatesAutoresizingMaskIntoConstraints="NO" id="y1z-3k-Dq1">
                                 <rect key="frame" x="47" y="83.5" width="281" height="500"/>
                             </imageView>
                         </subviews>
@@ -51,4 +51,7 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="markus_spiske_226898" width="1280" height="1920"/>
+    </resources>
 </document>
