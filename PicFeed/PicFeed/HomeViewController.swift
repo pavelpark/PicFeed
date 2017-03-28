@@ -52,6 +52,11 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //It calls all the actions that are located in the function underneath, that fires off the camera and photo library and cancel button.
     }
     
+    
+    @IBAction func postButtonPressed(_ sender: Any) {
+        
+    }
+    
     //actions when the user clicks on it
     func presentActionSheet(){
         

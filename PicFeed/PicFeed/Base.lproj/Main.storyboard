@@ -25,14 +25,26 @@
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markus_spiske_226898" translatesAutoresizingMaskIntoConstraints="NO" id="y1z-3k-Dq1">
                                 <rect key="frame" x="47" y="83.5" width="281" height="500"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8E-4P-dGI">
+                                <rect key="frame" x="46.5" y="45.5" width="281" height="30"/>
+                                <state key="normal" title="POST">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C6z-Sj-BLh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.86721348762512207" green="0.75677382946014404" blue="0.58552908897399902" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="y1z-3k-Dq1" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="XOP-lq-cGq"/>
+                            <constraint firstItem="l8E-4P-dGI" firstAttribute="width" secondItem="y1z-3k-Dq1" secondAttribute="width" id="aKb-rf-UF7"/>
                             <constraint firstItem="y1z-3k-Dq1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bLf-hD-FZK"/>
                             <constraint firstItem="y1z-3k-Dq1" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.75" id="cbf-vy-RZ1"/>
                             <constraint firstItem="y1z-3k-Dq1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hQy-3p-DNw"/>
+                            <constraint firstItem="y1z-3k-Dq1" firstAttribute="top" secondItem="l8E-4P-dGI" secondAttribute="bottom" constant="8" id="una-eT-wxS"/>
+                            <constraint firstItem="l8E-4P-dGI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wE4-L2-YnI"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="QYP-ue-mdn" appends="YES" id="9Ba-vC-q9S"/>

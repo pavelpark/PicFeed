@@ -29,6 +29,7 @@ class CloudKit {
                     
                     if error != nil {
                         completion(false)
+                        return
                 //the false is representing the bool
                     }
                     if let record = record {
