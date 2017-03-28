@@ -36,9 +36,11 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-       if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-        imageView.image = image
-        self.dismiss(animated: true, completion: nil)
+       if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
+        //imageView.image = image
+        //self.dismiss(animated: true, completion: nil)
+        self.imageView.image = originalImage
+        Filters.originalImage = originalImage
         //this allows funcionality to dismiss the imageview
 
         }
@@ -69,6 +71,35 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    
+    @IBAction func filterButtonPressed(_ sender: Any) {
+        
+        guard let image = self.imageView.image else { return }
+        
+        let alertController = UIAlertController(title: "Filter", message: "Please select a filter", preferredStyle: .alert)
+        
+        let blackAndWhiteAction = UIAlertAction(title: "Black & White", style: .default) { (action) in
+            Filters.filter(name: .blackAndWhite, image: image, completion: { (filteredImage) in
+                self.imageView.image = filteredImage
+            })
+        }
+        let vintageAction = UIAlertAction(title: "Vintage", style: .default) { (action) in
+            Filters.filter(name: .vintage, image: image, completion: { (filteredImage) in
+                self.imageView.image = filteredImage
+            })
+        }
+        let resetAction = UIAlertAction(title: "Reset Image", style: .destructive) { (action) in
+            self.imageView.image = Filters.originalImage
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(blackAndWhiteAction)
+        alertController.addAction(vintageAction)
+        alertController.addAction(resetAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
     //actions when the user clicks on it
     func presentActionSheet(){
         
