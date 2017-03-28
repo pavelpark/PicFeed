@@ -48,13 +48,14 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
        if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
         //imageView.image = image
-        //self.dismiss(animated: true, completion: nil)
         self.imageView.image = originalImage
         Filters.originalImage = originalImage
         //this allows funcionality to dismiss the imageview
 
         }
         print("info: \(info)")
+        self.dismiss(animated: true, completion: nil)
+
     }
     
     @IBAction func imageTapped(_ sender: Any) {
