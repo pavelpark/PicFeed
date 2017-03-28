@@ -13,6 +13,8 @@
 		DB7258181E897F0C006884E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB7258161E897F0C006884E5 /* LaunchScreen.storyboard */; };
 		DB7258341E8984E3006884E5 /* CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7258331E8984E3006884E5 /* CloudKit.swift */; };
 		DB7258361E898D4E006884E5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7258351E898D4E006884E5 /* HomeViewController.swift */; };
+		DB782C761E8AD0DC00063BD1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB782C751E8AD0DC00063BD1 /* Post.swift */; };
+		DB782C781E8AD36E00063BD1 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB782C771E8AD36E00063BD1 /* UIExtensions.swift */; };
 		DBEDC09C1E89AFDD00A30BBF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEDC09B1E89AFDD00A30BBF /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,8 @@
 		DB72581F1E898039006884E5 /* PicFeed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicFeed.entitlements; sourceTree = "<group>"; };
 		DB7258331E8984E3006884E5 /* CloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKit.swift; sourceTree = "<group>"; };
 		DB7258351E898D4E006884E5 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		DB782C751E8AD0DC00063BD1 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		DB782C771E8AD36E00063BD1 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		DBEDC09B1E89AFDD00A30BBF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -109,6 +113,8 @@
 		DB7258321E89825E006884E5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DB782C751E8AD0DC00063BD1 /* Post.swift */,
+				DB782C771E8AD36E00063BD1 /* UIExtensions.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -197,6 +203,8 @@
 				DB7258341E8984E3006884E5 /* CloudKit.swift in Sources */,
 				DB72580E1E897F0C006884E5 /* AppDelegate.swift in Sources */,
 				DB7258361E898D4E006884E5 /* HomeViewController.swift in Sources */,
+				DB782C781E8AD36E00063BD1 /* UIExtensions.swift in Sources */,
+				DB782C761E8AD0DC00063BD1 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
