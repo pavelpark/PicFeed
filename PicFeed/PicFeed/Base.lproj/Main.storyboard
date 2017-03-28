@@ -26,7 +26,7 @@
                                 <rect key="frame" x="47" y="83.5" width="281" height="500"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8E-4P-dGI">
-                                <rect key="frame" x="47" y="36.5" width="281" height="30"/>
+                                <rect key="frame" x="47" y="-146.5" width="281" height="30"/>
                                 <color key="backgroundColor" cyan="0.30268442829999997" magenta="0.02554740757" yellow="0.01703173295" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                 <state key="normal" title="POST">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,7 +57,7 @@
                             <constraint firstItem="y1z-3k-Dq1" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.75" id="cbf-vy-RZ1"/>
                             <constraint firstItem="y1z-3k-Dq1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hQy-3p-DNw"/>
                             <constraint firstItem="QhZ-Ek-C4j" firstAttribute="width" secondItem="y1z-3k-Dq1" secondAttribute="width" id="tV0-gl-PUb"/>
-                            <constraint firstItem="y1z-3k-Dq1" firstAttribute="top" secondItem="l8E-4P-dGI" secondAttribute="bottom" constant="17" id="una-eT-wxS"/>
+                            <constraint firstItem="y1z-3k-Dq1" firstAttribute="top" secondItem="l8E-4P-dGI" secondAttribute="bottom" constant="200" id="una-eT-wxS"/>
                             <constraint firstItem="l8E-4P-dGI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wE4-L2-YnI"/>
                         </constraints>
                         <connections>
@@ -68,6 +68,7 @@
                     <connections>
                         <outlet property="filterButtonTopConstraint" destination="RXt-Y7-fmQ" id="RjO-9d-Un1"/>
                         <outlet property="imageView" destination="y1z-3k-Dq1" id="Ubb-Gh-B9E"/>
+                        <outlet property="postButtonBottomConstraint" destination="una-eT-wxS" id="MBQ-Mr-EQ1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
