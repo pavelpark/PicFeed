@@ -22,6 +22,7 @@ class GallaryViewController: UIViewController {
         super.viewDidLoad()
 
         self.collectionView.dataSource = self
+        self.collectionView.collectionViewLayout = GallaryCollectionViewLayout(columns: 1)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
