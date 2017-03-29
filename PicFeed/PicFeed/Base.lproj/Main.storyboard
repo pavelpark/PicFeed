@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kSj-YR-PrT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,24 +22,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markus_spiske_226898" translatesAutoresizingMaskIntoConstraints="NO" id="y1z-3k-Dq1">
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markus_spiske_226898" translatesAutoresizingMaskIntoConstraints="NO" id="y1z-3k-Dq1">
                                 <rect key="frame" x="47" y="83.5" width="281" height="500"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8E-4P-dGI">
+                                <rect key="frame" x="47" y="-146.5" width="281" height="30"/>
+                                <color key="backgroundColor" cyan="0.30268442829999997" magenta="0.02554740757" yellow="0.01703173295" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                                <state key="normal" title="POST">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C6z-Sj-BLh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QhZ-Ek-C4j">
+                                <rect key="frame" x="47" y="783.5" width="281" height="30"/>
+                                <color key="backgroundColor" cyan="0.30268442829999997" magenta="0.02554740757" yellow="0.01703173295" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                                <state key="normal" title="FILTER">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="filterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RmC-wN-b0C"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.86721348762512207" green="0.75677382946014404" blue="0.58552908897399902" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="QhZ-Ek-C4j" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LFl-qk-Clo"/>
+                            <constraint firstItem="QhZ-Ek-C4j" firstAttribute="top" secondItem="y1z-3k-Dq1" secondAttribute="bottom" constant="200" id="RXt-Y7-fmQ"/>
                             <constraint firstItem="y1z-3k-Dq1" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="XOP-lq-cGq"/>
+                            <constraint firstItem="l8E-4P-dGI" firstAttribute="width" secondItem="y1z-3k-Dq1" secondAttribute="width" id="aKb-rf-UF7"/>
                             <constraint firstItem="y1z-3k-Dq1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bLf-hD-FZK"/>
                             <constraint firstItem="y1z-3k-Dq1" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.75" id="cbf-vy-RZ1"/>
                             <constraint firstItem="y1z-3k-Dq1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hQy-3p-DNw"/>
+                            <constraint firstItem="QhZ-Ek-C4j" firstAttribute="width" secondItem="y1z-3k-Dq1" secondAttribute="width" id="tV0-gl-PUb"/>
+                            <constraint firstItem="y1z-3k-Dq1" firstAttribute="top" secondItem="l8E-4P-dGI" secondAttribute="bottom" constant="200" id="una-eT-wxS"/>
+                            <constraint firstItem="l8E-4P-dGI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wE4-L2-YnI"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="QYP-ue-mdn" appends="YES" id="9Ba-vC-q9S"/>
                         </connections>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" id="LYZ-Qb-9bP"/>
                     <connections>
+                        <outlet property="filterButtonTopConstraint" destination="RXt-Y7-fmQ" id="RjO-9d-Un1"/>
                         <outlet property="imageView" destination="y1z-3k-Dq1" id="Ubb-Gh-B9E"/>
+                        <outlet property="postButtonBottomConstraint" destination="una-eT-wxS" id="MBQ-Mr-EQ1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -49,6 +78,25 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="972" y="37.331334332833585"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="lIk-1f-p9o">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="kSj-YR-PrT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Ua5-9Y-kgL">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.86721348760000005" green="0.75677382950000005" blue="0.585529089" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="il3-FU-hRv"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OgO-ei-tEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
         </scene>
     </scenes>
     <resources>
