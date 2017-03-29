@@ -23,13 +23,32 @@ class GallaryViewController: UIViewController {
 
         self.collectionView.dataSource = self
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        update()
+    }
+    
+    func update() {
+        CloudKit.shared.getPosts { (posts) in
+            if let posts = posts {
+                self.allPosts = posts
+            }
+            
+        }
+    }
 
 }
 
 //MARK: UICollectionViewDataSorce Extension
 extension GallaryViewController : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GallaryCell.identifier, for: indexPath) as! GallaryCell
         
+        cell.post = self.allPosts[indexPath.row]
+        
+        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
