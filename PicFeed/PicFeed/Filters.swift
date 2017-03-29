@@ -20,6 +20,9 @@ typealias FilterCompletion = (UIImage?) -> ()
 
 class Singleton{
     
+    static let shared = Singleton()
+    private init () {}
+
     func context() -> CIContext {
          let options = [kCIContextWorkingColorSpace: NSNull()]
          let eaglContext = EAGLContext(api: .openGLES2)
@@ -37,7 +40,7 @@ class Filters {
     //lets us rest to the original image
     
     
-        let ciContext = Singleton().context()
+        let ciContext = Singleton.shared.context()
     
         func filter(name: FilterName, image: UIImage, completion: @escaping FilterCompletion) {
         OperationQueue().addOperation {
