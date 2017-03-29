@@ -58,16 +58,21 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
+        var image = UIImage()
+        
        if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
         //imageView.image = image
-        self.imageView.image = originalImage
+        image = originalImage
         Filters.originalImage = originalImage
         //this allows funcionality to dismiss the imageview
 
         }
         print("info: \(info)")
-        self.dismiss(animated: true, completion: nil)
-
+        self.imagePicker.dismiss(animated: true) { 
+            UIView.transition(with: self.imageView, duration: 1, options: .transitionCrossDissolve, animations: { 
+                self.imageView.image = image
+            }, completion: nil)
+        }
     }
     
     @IBAction func imageTapped(_ sender: Any) {
