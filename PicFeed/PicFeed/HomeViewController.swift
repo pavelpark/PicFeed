@@ -36,6 +36,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //This is Override beacuse we are overriding the superclass
         super.viewDidLoad()
         
+        imageView.layer.cornerRadius = view.bounds.width / 90
         //This is how you do ANIMATIONS^
         
         // Do any additional setup after loading the view.
