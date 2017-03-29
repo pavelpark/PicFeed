@@ -63,7 +63,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
        if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
         //imageView.image = image
         image = originalImage
-        Filters.originalImage = originalImage
+        Filters.shared.originalImage = originalImage
         //this allows funcionality to dismiss the imageview
 
         }
@@ -107,32 +107,32 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let alertController = UIAlertController(title: "Filter", message: "Please select a filter", preferredStyle: .alert)
         
         let blackAndWhiteAction = UIAlertAction(title: "Black & White", style: .default) { (action) in
-            Filters.filter(name: .blackAndWhite, image: image, completion: { (filteredImage) in
+            Filters.shared.filter(name: .blackAndWhite, image: image, completion: { (filteredImage) in
                 self.imageView.image = filteredImage
             })
         }
         let vintageAction = UIAlertAction(title: "Vintage", style: .default) { (action) in
-            Filters.filter(name: .vintage, image: image, completion: { (filteredImage) in
+            Filters.shared.filter(name: .vintage, image: image, completion: { (filteredImage) in
                 self.imageView.image = filteredImage
             })
         }
         let coldAction = UIAlertAction(title: "Cold", style: .default) { (action) in
-            Filters.filter(name: .coldEffect, image: image, completion: { (filteredImage) in
+            Filters.shared.filter(name: .coldEffect, image: image, completion: { (filteredImage) in
                 self.imageView.image = filteredImage
             })
         }
         let devilAction = UIAlertAction(title: "Devil", style: .default) { (action) in
-            Filters.filter(name: .devilEffect, image: image, completion: { (filteredImage) in
+            Filters.shared.filter(name: .devilEffect, image: image, completion: { (filteredImage) in
                 self.imageView.image = filteredImage
             })
         }
         let posterizeAction = UIAlertAction(title: "Posterize", style: .default) { (action) in
-            Filters.filter(name: .posterizeEffect, image: image, completion: { (filteredImage) in
+            Filters.shared.filter(name: .posterizeEffect, image: image, completion: { (filteredImage) in
                 self.imageView.image = filteredImage
             })
         }
         let resetAction = UIAlertAction(title: "Reset Image", style: .destructive) { (action) in
-            self.imageView.image = Filters.originalImage
+            self.imageView.image = Filters.shared.originalImage
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         

@@ -17,6 +17,7 @@ typealias PostsCompletion = ([Post]?)->()
 class CloudKit {
     //creating a CloudKit as a singletone
     static let shared = CloudKit()
+    private init ( ){ }
     //creating a container to store later
     let container = CKContainer.default()
     
