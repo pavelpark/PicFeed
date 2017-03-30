@@ -10,9 +10,14 @@ import UIKit
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    let filterNames = [FilterName.vintage, FilterName.blackAndWhite, FilterName.coldEffect, FilterName.devilEffect,
+                       FilterName.posterizeEffect]
+    
     let imagePicker = UIImagePickerController()
 
     @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var filterButtonTopConstraint: NSLayoutConstraint!
     
@@ -41,6 +46,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //This is how you do ANIMATIONS^
         
         // Do any additional setup after loading the view.
+        self.collectionView.dataSource = self
     }
     //handles each source type
     func presentImagePickerWith(sourceType: UIImagePickerControllerSourceType) {
@@ -65,11 +71,13 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         image = originalImage
         Filters.shared.originalImage = originalImage
         //this allows funcionality to dismiss the imageview
+        self.collectionView.reloadData()
+        //filters of the images are showing now in the filter picker ^
 
         }
         print("info: \(info)")
         self.imagePicker.dismiss(animated: true) { 
-            UIView.transition(with: self.imageView, duration: 1, options: .transitionCrossDissolve, animations: { 
+            UIView.transition(with: self.imageView, duration: 1, options: .transitionCrossDissolve, animations: {
                 self.imageView.image = image
             }, completion: nil)
         }
@@ -169,5 +177,29 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         actionSheetController.addAction(cancelAction)
         
         self.present(actionSheetController, animated: true, completion: nil)
+    }
+}
+
+//MARK: UICollectionView DataSource
+extension HomeViewController : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let filterCell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCell.identifier, for: indexPath) as! FilterCell
+        
+        guard let originalImage = Filters.shared.originalImage else { return filterCell }
+        
+        guard let resizedImage = originalImage.resize(size: CGSize(width: 150, height: 150)) else { return filterCell}
+        
+        let filterName = self.filterNames[indexPath.row]
+        
+        Filters.shared.filter(name: filterName, image: resizedImage) { (filteredImage) in
+            filterCell.imageView.image = filteredImage
+        }
+        
+        return filterCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return filterNames.count
     }
 }

@@ -35,7 +35,7 @@ class Filters {
     static let shared = Filters()
     private init () {}
     
-    var originalImage = UIImage()
+     var originalImage : UIImage?
     //lets us rest to the original image
     
     
