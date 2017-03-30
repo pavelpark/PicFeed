@@ -19,6 +19,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var filterButtonTopConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var postButtonBottomConstraint: NSLayoutConstraint!
@@ -47,6 +49,20 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         // Do any additional setup after loading the view.
         self.collectionView.dataSource = self
+        
+        setUpGallaryDelegate()
+    }
+    
+    func setUpGallaryDelegate (){
+        
+        if let tabBarController = self.tabBarController {
+            
+            guard let viewControllers = tabBarController.viewControllers else { return }
+            
+            guard let gallaryController = viewControllers[1] as? GallaryViewController else { return }
+            
+            gallaryController.delegate = self
+        }
     }
     //handles each source type
     func presentImagePickerWith(sourceType: UIImagePickerControllerSourceType) {
@@ -112,47 +128,53 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         guard let image = self.imageView.image else { return }
         
-        let alertController = UIAlertController(title: "Filter", message: "Please select a filter", preferredStyle: .alert)
+        self.collectionViewHeightConstraint.constant = 150
         
-        let blackAndWhiteAction = UIAlertAction(title: "Black & White", style: .default) { (action) in
-            Filters.shared.filter(name: .blackAndWhite, image: image, completion: { (filteredImage) in
-                self.imageView.image = filteredImage
-            })
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
         }
-        let vintageAction = UIAlertAction(title: "Vintage", style: .default) { (action) in
-            Filters.shared.filter(name: .vintage, image: image, completion: { (filteredImage) in
-                self.imageView.image = filteredImage
-            })
-        }
-        let coldAction = UIAlertAction(title: "Cold", style: .default) { (action) in
-            Filters.shared.filter(name: .coldEffect, image: image, completion: { (filteredImage) in
-                self.imageView.image = filteredImage
-            })
-        }
-        let devilAction = UIAlertAction(title: "Devil", style: .default) { (action) in
-            Filters.shared.filter(name: .devilEffect, image: image, completion: { (filteredImage) in
-                self.imageView.image = filteredImage
-            })
-        }
-        let posterizeAction = UIAlertAction(title: "Posterize", style: .default) { (action) in
-            Filters.shared.filter(name: .posterizeEffect, image: image, completion: { (filteredImage) in
-                self.imageView.image = filteredImage
-            })
-        }
-        let resetAction = UIAlertAction(title: "Reset Image", style: .destructive) { (action) in
-            self.imageView.image = Filters.shared.originalImage
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        alertController.addAction(blackAndWhiteAction)
-        alertController.addAction(vintageAction)
-        alertController.addAction(coldAction)
-        alertController.addAction(devilAction)
-        alertController.addAction(posterizeAction)
-        alertController.addAction(resetAction)
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
+//        let alertController = UIAlertController(title: "Filter", message: "Please select a filter", preferredStyle: .alert)
+//        
+//        let blackAndWhiteAction = UIAlertAction(title: "Black & White", style: .default) { (action) in
+//            Filters.shared.filter(name: .blackAndWhite, image: image, completion: { (filteredImage) in
+//                self.imageView.image = filteredImage
+//            })
+//        }
+//        let vintageAction = UIAlertAction(title: "Vintage", style: .default) { (action) in
+//            Filters.shared.filter(name: .vintage, image: image, completion: { (filteredImage) in
+//                self.imageView.image = filteredImage
+//            })
+//        }
+//        let coldAction = UIAlertAction(title: "Cold", style: .default) { (action) in
+//            Filters.shared.filter(name: .coldEffect, image: image, completion: { (filteredImage) in
+//                self.imageView.image = filteredImage
+//            })
+//        }
+//        let devilAction = UIAlertAction(title: "Devil", style: .default) { (action) in
+//            Filters.shared.filter(name: .devilEffect, image: image, completion: { (filteredImage) in
+//                self.imageView.image = filteredImage
+//            })
+//        }
+//        let posterizeAction = UIAlertAction(title: "Posterize", style: .default) { (action) in
+//            Filters.shared.filter(name: .posterizeEffect, image: image, completion: { (filteredImage) in
+//                self.imageView.image = filteredImage
+//            })
+//        }
+//        let resetAction = UIAlertAction(title: "Reset Image", style: .destructive) { (action) in
+//            self.imageView.image = Filters.shared.originalImage
+//        }
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        
+//        alertController.addAction(blackAndWhiteAction)
+//        alertController.addAction(vintageAction)
+//        alertController.addAction(coldAction)
+//        alertController.addAction(devilAction)
+//        alertController.addAction(posterizeAction)
+//        alertController.addAction(resetAction)
+//        alertController.addAction(cancelAction)
+//        
+//        self.present(alertController, animated: true, completion: nil)
     }
     //actions when the user clicks on it
     func presentActionSheet(){
@@ -202,4 +224,13 @@ extension HomeViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filterNames.count
     }
+}
+
+extension HomeViewController: GallaryViewControllerDelegate {
+    func galaryController(didSelect image: UIImage) {
+        self.imageView.image = image
+        
+        self.tabBarController?.selectedIndex = 0
+    }
+    
 }

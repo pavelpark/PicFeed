@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class GallaryCollectionViewLayout: UICollectionViewFlowLayout {
 
     var columns = 2
