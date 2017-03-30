@@ -129,7 +129,11 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         guard let image = self.imageView.image else { return }
         
-        self.collectionViewHeightConstraint.constant = 150
+        if self.collectionViewHeightConstraint.constant == 0 {
+            self.collectionViewHeightConstraint.constant = 150
+        } else {
+            self.collectionViewHeightConstraint.constant = 0
+        }
         
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()

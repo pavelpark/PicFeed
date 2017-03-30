@@ -52,7 +52,7 @@
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="reZ-fx-AjY">
                                 <rect key="frame" x="0.0" y="583" width="375" height="0.0"/>
-                                <color key="backgroundColor" red="0.55433490490749071" green="0.73161503626824431" blue="0.79998437899809616" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.51632913050456197" green="0.68145475270673606" blue="0.74513662258783975" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="sVc-e1-DMb"/>
                                 </constraints>
