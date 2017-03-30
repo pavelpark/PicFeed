@@ -25,6 +25,10 @@
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markus_spiske_226898" translatesAutoresizingMaskIntoConstraints="NO" id="y1z-3k-Dq1">
                                 <rect key="frame" x="47" y="83.5" width="281" height="500"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zet-SJ-JSe" appends="YES" id="0rT-g6-BIt"/>
+                                </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8E-4P-dGI">
                                 <rect key="frame" x="47" y="-146.5" width="281" height="30"/>
@@ -121,6 +125,11 @@
                         <action selector="imageTapped:" destination="BYZ-38-t0r" id="bCz-BH-L3h"/>
                     </connections>
                 </tapGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="zet-SJ-JSe">
+                    <connections>
+                        <action selector="userLongPressed:" destination="BYZ-38-t0r" id="6Fd-r4-dRv"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="972" y="37.331334332833585"/>
         </scene>

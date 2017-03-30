@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -176,7 +177,22 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //        
 //        self.present(alertController, animated: true, completion: nil)
     }
+    
     //actions when the user clicks on it
+    @IBAction func userLongPressed(_ sender: Any) {
+        
+        if(SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter)){
+            
+            guard let composeController = SLComposeViewController(forServiceType: SLServiceTypeTwitter) else { return }
+            
+            composeController.add(self.imageView.image)
+            
+            self.present(composeController, animated: true, completion: nil)
+        }
+       
+    }
+    
+    
     func presentActionSheet(){
         
         let actionSheetController = UIAlertController(title: "Source", message: "Please Select Sourse Type", preferredStyle: .actionSheet)
