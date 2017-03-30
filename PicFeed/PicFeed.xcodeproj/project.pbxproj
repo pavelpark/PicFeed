@@ -16,6 +16,9 @@
 		DB782C761E8AD0DC00063BD1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB782C751E8AD0DC00063BD1 /* Post.swift */; };
 		DB782C781E8AD36E00063BD1 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB782C771E8AD36E00063BD1 /* UIExtensions.swift */; };
 		DB782C7A1E8AE71C00063BD1 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB782C791E8AE71C00063BD1 /* Filters.swift */; };
+		DB782C7C1E8C237200063BD1 /* GallaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB782C7B1E8C237200063BD1 /* GallaryViewController.swift */; };
+		DB782C7E1E8C277C00063BD1 /* GallaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB782C7D1E8C277C00063BD1 /* GallaryCell.swift */; };
+		DB782C801E8C37B100063BD1 /* GallaryCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB782C7F1E8C37B100063BD1 /* GallaryCollectionViewLayout.swift */; };
 		DBEDC09C1E89AFDD00A30BBF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEDC09B1E89AFDD00A30BBF /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +35,9 @@
 		DB782C751E8AD0DC00063BD1 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		DB782C771E8AD36E00063BD1 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		DB782C791E8AE71C00063BD1 /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		DB782C7B1E8C237200063BD1 /* GallaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GallaryViewController.swift; sourceTree = "<group>"; };
+		DB782C7D1E8C277C00063BD1 /* GallaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GallaryCell.swift; sourceTree = "<group>"; };
+		DB782C7F1E8C37B100063BD1 /* GallaryCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GallaryCollectionViewLayout.swift; sourceTree = "<group>"; };
 		DBEDC09B1E89AFDD00A30BBF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -96,6 +102,8 @@
 		DB7258301E898235006884E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DB782C7F1E8C37B100063BD1 /* GallaryCollectionViewLayout.swift */,
+				DB782C7B1E8C237200063BD1 /* GallaryViewController.swift */,
 				DB7258351E898D4E006884E5 /* HomeViewController.swift */,
 				DB72580D1E897F0C006884E5 /* AppDelegate.swift */,
 				DB7258331E8984E3006884E5 /* CloudKit.swift */,
@@ -106,6 +114,7 @@
 		DB7258311E898249006884E5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DB782C7D1E8C277C00063BD1 /* GallaryCell.swift */,
 				DB7258111E897F0C006884E5 /* Main.storyboard */,
 				DB7258161E897F0C006884E5 /* LaunchScreen.storyboard */,
 			);
@@ -203,12 +212,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB782C801E8C37B100063BD1 /* GallaryCollectionViewLayout.swift in Sources */,
+				DB782C7E1E8C277C00063BD1 /* GallaryCell.swift in Sources */,
 				DB7258341E8984E3006884E5 /* CloudKit.swift in Sources */,
 				DB72580E1E897F0C006884E5 /* AppDelegate.swift in Sources */,
 				DB7258361E898D4E006884E5 /* HomeViewController.swift in Sources */,
 				DB782C7A1E8AE71C00063BD1 /* Filters.swift in Sources */,
 				DB782C781E8AD36E00063BD1 /* UIExtensions.swift in Sources */,
 				DB782C761E8AD0DC00063BD1 /* Post.swift in Sources */,
+				DB782C7C1E8C237200063BD1 /* GallaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

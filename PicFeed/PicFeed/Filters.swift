@@ -18,13 +18,30 @@ enum FilterName: String {
 
 typealias FilterCompletion = (UIImage?) -> ()
 
+class Singleton{
+    
+    static let shared = Singleton()
+    private init () {
+        let options = [kCIContextWorkingColorSpace: NSNull()]
+        let eaglContext = EAGLContext(api: .openGLES2)
+        context = CIContext(eaglContext: eaglContext!, options: options)
 
+    }
+
+    let context : CIContext
+}
 class Filters {
     
-    static var originalImage = UIImage()
+    static let shared = Filters()
+    private init () {}
+    
+    var originalImage = UIImage()
     //lets us rest to the original image
     
-    class func filter(name: FilterName, image: UIImage, completion: @escaping FilterCompletion) {
+    
+        let ciContext = Singleton.shared.context
+    
+        func filter(name: FilterName, image: UIImage, completion: @escaping FilterCompletion) {
         OperationQueue().addOperation {
             
             guard let filter = CIFilter(name: name.rawValue) else { fatalError("Failed to creat CIFilter") }
@@ -32,16 +49,12 @@ class Filters {
             let coreImage = CIImage(image: image)
             filter.setValue(coreImage, forKey: kCIInputImageKey)
             
-            //GPU Context 
-            let options = [kCIContextWorkingColorSpace: NSNull()]
-            guard let eaglContext = EAGLContext(api: .openGLES2) else { fatalError("Failed to creat EAGLContext") }
-            
-            let ciContext = CIContext(eaglContext: eaglContext, options: options)
+            //GPU Context
             //Get the final image from using the GPU
             //these will always be the 3 lines that are used
             guard let outputImage = filter.outputImage else { fatalError("Failed to get the output image from Filter.") }
             
-            if let cgImage = ciContext.createCGImage(outputImage, from: outputImage.extent) {
+            if let cgImage = self.ciContext.createCGImage(outputImage, from: outputImage.extent) {
                 
                 let finalImage = UIImage(cgImage: cgImage)
                 

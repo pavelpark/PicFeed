@@ -20,7 +20,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     
     override func viewDidAppear(_ animated:Bool) {
-    
+    super.viewDidAppear(animated)
+        
     filterButtonTopConstraint.constant = 8
     postButtonBottomConstraint.constant = 8
         
@@ -57,16 +58,21 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
+        var image = UIImage()
+        
        if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
         //imageView.image = image
-        self.imageView.image = originalImage
-        Filters.originalImage = originalImage
+        image = originalImage
+        Filters.shared.originalImage = originalImage
         //this allows funcionality to dismiss the imageview
 
         }
         print("info: \(info)")
-        self.dismiss(animated: true, completion: nil)
-
+        self.imagePicker.dismiss(animated: true) { 
+            UIView.transition(with: self.imageView, duration: 1, options: .transitionCrossDissolve, animations: { 
+                self.imageView.image = image
+            }, completion: nil)
+        }
     }
     
     @IBAction func imageTapped(_ sender: Any) {
@@ -81,7 +87,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         if let image = self.imageView.image{
             
-            let newPost = Post(image: image)
+            let newPost = Post(image: image, date: Date())
             CloudKit.shared.save(post: newPost, completion: { (success) in
                 
                 if success {
@@ -101,32 +107,32 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let alertController = UIAlertController(title: "Filter", message: "Please select a filter", preferredStyle: .alert)
         
         let blackAndWhiteAction = UIAlertAction(title: "Black & White", style: .default) { (action) in
-            Filters.filter(name: .blackAndWhite, image: image, completion: { (filteredImage) in
+            Filters.shared.filter(name: .blackAndWhite, image: image, completion: { (filteredImage) in
                 self.imageView.image = filteredImage
             })
         }
         let vintageAction = UIAlertAction(title: "Vintage", style: .default) { (action) in
-            Filters.filter(name: .vintage, image: image, completion: { (filteredImage) in
+            Filters.shared.filter(name: .vintage, image: image, completion: { (filteredImage) in
                 self.imageView.image = filteredImage
             })
         }
         let coldAction = UIAlertAction(title: "Cold", style: .default) { (action) in
-            Filters.filter(name: .coldEffect, image: image, completion: { (filteredImage) in
+            Filters.shared.filter(name: .coldEffect, image: image, completion: { (filteredImage) in
                 self.imageView.image = filteredImage
             })
         }
         let devilAction = UIAlertAction(title: "Devil", style: .default) { (action) in
-            Filters.filter(name: .devilEffect, image: image, completion: { (filteredImage) in
+            Filters.shared.filter(name: .devilEffect, image: image, completion: { (filteredImage) in
                 self.imageView.image = filteredImage
             })
         }
         let posterizeAction = UIAlertAction(title: "Posterize", style: .default) { (action) in
-            Filters.filter(name: .posterizeEffect, image: image, completion: { (filteredImage) in
+            Filters.shared.filter(name: .posterizeEffect, image: image, completion: { (filteredImage) in
                 self.imageView.image = filteredImage
             })
         }
         let resetAction = UIAlertAction(title: "Reset Image", style: .destructive) { (action) in
-            self.imageView.image = Filters.originalImage
+            self.imageView.image = Filters.shared.originalImage
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
