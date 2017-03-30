@@ -72,9 +72,9 @@ class CloudKit {
                         
                         if let image = UIImage(contentsOfFile: path) {
                             
-                            let newPost = Post(image: image)
+                            let fetchedPost = Post(image: image, date: record.creationDate!)
                             
-                            posts.append(newPost)
+                            posts.append(fetchedPost)
                         }
                     }
                 }

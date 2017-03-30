@@ -12,10 +12,17 @@ class GallaryCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var dateLabel: UILabel!
     
     var post: Post! {
         didSet{
             self.imageView.image = post.image
+            let dateString = DateFormatter.localizedString(from: post.date,
+                                                           dateStyle: .short,
+                                                           timeStyle: .short)
+            self.dateLabel.text = dateString
+            
+            
         }
     }
 
