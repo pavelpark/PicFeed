@@ -259,7 +259,7 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
 extension HomeViewController: GallaryViewControllerDelegate {
     func galaryController(didSelect image: UIImage) {
         self.imageView.image = image
-        
+        Filters.shared.originalImage = image
         self.tabBarController?.selectedIndex = 0
     }
     
