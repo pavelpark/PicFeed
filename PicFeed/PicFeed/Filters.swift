@@ -14,6 +14,7 @@ enum FilterName: String {
     case coldEffect = "CIPhotoEffectFade"
     case devilEffect = "CIColorInvert"
     case posterizeEffect = "CIColorPosterize"
+    
 }
 
 typealias FilterCompletion = (UIImage?) -> ()

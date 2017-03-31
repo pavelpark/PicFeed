@@ -13,9 +13,10 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     let filterNames = [FilterName.vintage, FilterName.blackAndWhite, FilterName.coldEffect, FilterName.devilEffect,
                        FilterName.posterizeEffect]
+    let filterLabelNames = ["Vintage", "B & W", "Cold", "Devil", "Posterized"]
     
     let imagePicker = UIImagePickerController()
-
+    
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -28,16 +29,15 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     
     override func viewDidAppear(_ animated:Bool) {
-    super.viewDidAppear(animated)
+        super.viewDidAppear(animated)
         
-    filterButtonTopConstraint.constant = 8
-    postButtonBottomConstraint.constant = 8
+        filterButtonTopConstraint.constant = 8
+        postButtonBottomConstraint.constant = 8
         
-    
-    UIView.animate(withDuration: 0.6) {
-    self.view.layoutIfNeeded()
-    }
-
+        UIView.animate(withDuration: 0.6) {
+            self.view.layoutIfNeeded()
+        }
+        
     }
     
     
@@ -50,6 +50,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         // Do any additional setup after loading the view.
         self.collectionView.dataSource = self
+        self.collectionView.delegate = self
         
         setUpGallaryDelegate()
     }
@@ -83,30 +84,29 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         var image = UIImage()
         
-       if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
-        //imageView.image = image
-        image = originalImage
-        Filters.shared.originalImage = originalImage
-        //this allows funcionality to dismiss the imageview
-        self.collectionView.reloadData()
-        //filters of the images are showing now in the filter picker ^
-
+        if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            //imageView.image = image
+            image = originalImage
+            Filters.shared.originalImage = originalImage
+            //this allows funcionality to dismiss the imageview
+            self.collectionView.reloadData()
+            //filters of the images are showing now in the filter picker ^
+            
         }
         print("info: \(info)")
-        self.imagePicker.dismiss(animated: true) { 
+        self.imagePicker.dismiss(animated: true) {
             UIView.transition(with: self.imageView, duration: 1, options: .transitionCrossDissolve, animations: {
                 self.imageView.image = image
             }, completion: nil)
         }
     }
     
-    @IBAction func imageTapped(_ sender: Any) {
+    @IBAction func imageViewTapped(_ sender: Any) {
         print("User tapped Image")
         self.presentActionSheet()
         //This is basically an event listener
         //It calls all the actions that are located in the function underneath, that fires off the camera and photo library and cancel button.
     }
-    
     
     @IBAction func postButtonPressed(_ sender: Any) {
         
@@ -139,47 +139,47 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             self.view.layoutIfNeeded()
         }
         
-//        let alertController = UIAlertController(title: "Filter", message: "Please select a filter", preferredStyle: .alert)
-//        
-//        let blackAndWhiteAction = UIAlertAction(title: "Black & White", style: .default) { (action) in
-//            Filters.shared.filter(name: .blackAndWhite, image: image, completion: { (filteredImage) in
-//                self.imageView.image = filteredImage
-//            })
-//        }
-//        let vintageAction = UIAlertAction(title: "Vintage", style: .default) { (action) in
-//            Filters.shared.filter(name: .vintage, image: image, completion: { (filteredImage) in
-//                self.imageView.image = filteredImage
-//            })
-//        }
-//        let coldAction = UIAlertAction(title: "Cold", style: .default) { (action) in
-//            Filters.shared.filter(name: .coldEffect, image: image, completion: { (filteredImage) in
-//                self.imageView.image = filteredImage
-//            })
-//        }
-//        let devilAction = UIAlertAction(title: "Devil", style: .default) { (action) in
-//            Filters.shared.filter(name: .devilEffect, image: image, completion: { (filteredImage) in
-//                self.imageView.image = filteredImage
-//            })
-//        }
-//        let posterizeAction = UIAlertAction(title: "Posterize", style: .default) { (action) in
-//            Filters.shared.filter(name: .posterizeEffect, image: image, completion: { (filteredImage) in
-//                self.imageView.image = filteredImage
-//            })
-//        }
-//        let resetAction = UIAlertAction(title: "Reset Image", style: .destructive) { (action) in
-//            self.imageView.image = Filters.shared.originalImage
-//        }
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//        
-//        alertController.addAction(blackAndWhiteAction)
-//        alertController.addAction(vintageAction)
-//        alertController.addAction(coldAction)
-//        alertController.addAction(devilAction)
-//        alertController.addAction(posterizeAction)
-//        alertController.addAction(resetAction)
-//        alertController.addAction(cancelAction)
-//        
-//        self.present(alertController, animated: true, completion: nil)
+        //        let alertController = UIAlertController(title: "Filter", message: "Please select a filter", preferredStyle: .alert)
+        //
+        //        let blackAndWhiteAction = UIAlertAction(title: "Black & White", style: .default) { (action) in
+        //            Filters.shared.filter(name: .blackAndWhite, image: image, completion: { (filteredImage) in
+        //                self.imageView.image = filteredImage
+        //            })
+        //        }
+        //        let vintageAction = UIAlertAction(title: "Vintage", style: .default) { (action) in
+        //            Filters.shared.filter(name: .vintage, image: image, completion: { (filteredImage) in
+        //                self.imageView.image = filteredImage
+        //            })
+        //        }
+        //        let coldAction = UIAlertAction(title: "Cold", style: .default) { (action) in
+        //            Filters.shared.filter(name: .coldEffect, image: image, completion: { (filteredImage) in
+        //                self.imageView.image = filteredImage
+        //            })
+        //        }
+        //        let devilAction = UIAlertAction(title: "Devil", style: .default) { (action) in
+        //            Filters.shared.filter(name: .devilEffect, image: image, completion: { (filteredImage) in
+        //                self.imageView.image = filteredImage
+        //            })
+        //        }
+        //        let posterizeAction = UIAlertAction(title: "Posterize", style: .default) { (action) in
+        //            Filters.shared.filter(name: .posterizeEffect, image: image, completion: { (filteredImage) in
+        //                self.imageView.image = filteredImage
+        //            })
+        //        }
+        //        let resetAction = UIAlertAction(title: "Reset Image", style: .destructive) { (action) in
+        //            self.imageView.image = Filters.shared.originalImage
+        //        }
+        //        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        //
+        //        alertController.addAction(blackAndWhiteAction)
+        //        alertController.addAction(vintageAction)
+        //        alertController.addAction(coldAction)
+        //        alertController.addAction(devilAction)
+        //        alertController.addAction(posterizeAction)
+        //        alertController.addAction(resetAction)
+        //        alertController.addAction(cancelAction)
+        //
+        //        self.present(alertController, animated: true, completion: nil)
     }
     
     //actions when the user clicks on it
@@ -193,7 +193,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             
             self.present(composeController, animated: true, completion: nil)
         }
-       
+        
     }
     
     
@@ -211,7 +211,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         if !UIImagePickerController.isSourceTypeAvailable(.camera){
             cameraAction.isEnabled = false
-        //This does not let the User use the camera option if the user doesn't have a camera on the device.^
+            //This does not let the User use the camera option if the user doesn't have a camera on the device.^
         }
         
         actionSheetController.addAction(cameraAction)
@@ -223,7 +223,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 }
 
 //MARK: UICollectionView DataSource
-extension HomeViewController : UICollectionViewDataSource {
+extension HomeViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let filterCell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCell.identifier, for: indexPath) as! FilterCell
@@ -237,12 +237,22 @@ extension HomeViewController : UICollectionViewDataSource {
         Filters.shared.filter(name: filterName, image: resizedImage) { (filteredImage) in
             filterCell.imageView.image = filteredImage
         }
-        
+        filterCell.filterName = filterName
+         filterCell.filterLabel.text = filterLabelNames[indexPath.row]
+
         return filterCell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filterNames.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedFilterName = filterNames[indexPath.row]
+        
+        Filters.shared.filter(name: selectedFilterName, image: Filters.shared.originalImage!) { (filteredImage) in
+            self.imageView.image = filteredImage
+        }
     }
 }
 

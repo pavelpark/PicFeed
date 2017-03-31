@@ -23,11 +23,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markus_spiske_226898" translatesAutoresizingMaskIntoConstraints="NO" id="y1z-3k-Dq1">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markus_spiske_226898" translatesAutoresizingMaskIntoConstraints="NO" id="y1z-3k-Dq1">
                                 <rect key="frame" x="47" y="83.5" width="281" height="500"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="zet-SJ-JSe" appends="YES" id="0rT-g6-BIt"/>
+                                    <outletCollection property="gestureRecognizers" destination="r69-k0-bEm" appends="YES" id="Naf-9G-bRU"/>
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8E-4P-dGI">
@@ -68,18 +69,27 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0p5-7U-NDt">
-                                                    <rect key="frame" x="0.0" y="0.0" width="115" height="110"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0p5-7U-NDt">
+                                                    <rect key="frame" x="10" y="0.0" width="95" height="90"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdk-RU-beG">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="0p5-7U-NDt" secondAttribute="bottom" id="3sI-VV-QbA"/>
-                                            <constraint firstItem="0p5-7U-NDt" firstAttribute="leading" secondItem="Tgq-fT-zke" secondAttribute="leading" id="Fkz-eY-OOm"/>
+                                            <constraint firstAttribute="bottom" secondItem="0p5-7U-NDt" secondAttribute="bottom" constant="20" id="3sI-VV-QbA"/>
+                                            <constraint firstItem="0p5-7U-NDt" firstAttribute="leading" secondItem="Tgq-fT-zke" secondAttribute="leading" constant="10" id="Fkz-eY-OOm"/>
+                                            <constraint firstAttribute="trailing" secondItem="rdk-RU-beG" secondAttribute="trailing" id="GGQ-dl-3NG"/>
                                             <constraint firstItem="0p5-7U-NDt" firstAttribute="top" secondItem="Tgq-fT-zke" secondAttribute="top" id="fit-5N-ffk"/>
-                                            <constraint firstAttribute="trailing" secondItem="0p5-7U-NDt" secondAttribute="trailing" id="n8D-Fb-xLs"/>
+                                            <constraint firstAttribute="trailing" secondItem="0p5-7U-NDt" secondAttribute="trailing" constant="10" id="n8D-Fb-xLs"/>
+                                            <constraint firstItem="rdk-RU-beG" firstAttribute="leading" secondItem="Tgq-fT-zke" secondAttribute="leading" id="rFt-ER-5aM"/>
+                                            <constraint firstAttribute="bottom" secondItem="rdk-RU-beG" secondAttribute="bottom" id="w6g-5X-ENU"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="filterLabel" destination="rdk-RU-beG" id="JgE-z1-lIg"/>
                                             <outlet property="imageView" destination="0p5-7U-NDt" id="SHN-7B-COo"/>
                                         </connections>
                                     </collectionViewCell>
@@ -104,9 +114,6 @@
                             <constraint firstItem="y1z-3k-Dq1" firstAttribute="top" secondItem="l8E-4P-dGI" secondAttribute="bottom" constant="200" id="una-eT-wxS"/>
                             <constraint firstItem="l8E-4P-dGI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wE4-L2-YnI"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="QYP-ue-mdn" appends="YES" id="9Ba-vC-q9S"/>
-                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Post" id="LYZ-Qb-9bP">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
@@ -120,16 +127,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="QYP-ue-mdn">
-                    <connections>
-                        <action selector="imageTapped:" destination="BYZ-38-t0r" id="bCz-BH-L3h"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="zet-SJ-JSe">
                     <connections>
                         <action selector="userLongPressed:" destination="BYZ-38-t0r" id="6Fd-r4-dRv"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <tapGestureRecognizer id="r69-k0-bEm">
+                    <connections>
+                        <action selector="imageViewTapped:" destination="BYZ-38-t0r" id="Laz-rx-Mab"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="972" y="37.331334332833585"/>
         </scene>

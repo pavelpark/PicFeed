@@ -12,6 +12,9 @@ class FilterCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var filterLabel: UILabel!
+    var filterName : FilterName!
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         
