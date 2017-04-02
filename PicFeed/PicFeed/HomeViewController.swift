@@ -259,7 +259,14 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
 extension HomeViewController: GallaryViewControllerDelegate {
     func galaryController(didSelect image: UIImage) {
         self.imageView.image = image
+//        Trying to apply Animation
+//        self.imagePicker.dismiss(animated: true) {
+//            UIView.transition(with: self.imageView, duration: 1, options: .transitionCurlUp, animations: {
+//                self.imageView.image = image
+//            }, completion: nil)
+//        }
         Filters.shared.originalImage = image
+        
         self.tabBarController?.selectedIndex = 0
     }
     
